@@ -1,0 +1,9 @@
+dotenv
+express
+mysql2
+sequelize
+zod
+nodemon
+cors
+multer
+morgan
