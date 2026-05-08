@@ -13,7 +13,7 @@ export default function VerProductos() {
   return (
     <main>
       <h1>Mis productos</h1>
-      <div className="flex gap-4 flex-wrap my-6">
+      <div className="flex gap-4 flex-wrap my-6 max-md:justify-center px-2">
         {productosQuery.data?.map((producto) => (
           <Card key={producto.id} prod={producto} />
         ))}

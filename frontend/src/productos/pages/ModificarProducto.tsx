@@ -65,66 +65,69 @@ function ModificarProductoForm({
   return (
     <main className="w-full">
       <h1>Modificar Producto</h1>
-      <form className="flex flex-wrap gap-2">
-        <InputCustom
-          label="Nombre"
-          type="text"
-          value={formData.nombre}
-          onChange={(e) =>
-            setFormData({
-              ...formData,
-              nombre: e.target.value,
-            })
-          }
-          maxLength={50}
-        />
-        <InputCustom
-          label="Descripción"
-          type="text"
-          value={formData.descripcion}
-          onChange={(e) =>
-            setFormData({
-              ...formData,
-              descripcion: e.target.value,
-            })
-          }
-          maxLength={500}
-        />
-        <InputCustom
-          type="number"
-          label="Precio"
-          value={formData.precio}
-          onChange={(e) =>
-            setFormData({
-              ...formData,
-              precio:
-                Number.parseFloat(e.target.value) || 0,
-            })
-          }
-          min={1}
-        />
-        <InputCustom
-          type="number"
-          label="Stock"
-          value={formData.stock}
-          onChange={(e) =>
-            setFormData({
-              ...formData,
-              stock: Number.parseInt(e.target.value) || 0,
-            })
-          }
-          min={1}
-        />
-        <InputCustom
-          type="file"
-          label="Imagen"
-          onChange={(e) => {
-            const file = e.target.files?.[0];
-            if (file) {
-              setFormData({ ...formData, imagen: file });
+      <form className="p-2">
+        <section className="flex flex-wrap gap-2 ">
+          <InputCustom
+            label="Nombre"
+            type="text"
+            value={formData.nombre}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                nombre: e.target.value,
+              })
             }
-          }}
-        />
+            maxLength={50}
+          />
+          <InputCustom
+            label="Descripción"
+            type="text"
+            value={formData.descripcion}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                descripcion: e.target.value,
+              })
+            }
+            maxLength={500}
+          />
+          <InputCustom
+            type="number"
+            label="Precio"
+            value={formData.precio}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                precio:
+                  Number.parseFloat(e.target.value) || 0,
+              })
+            }
+            min={1}
+          />
+          <InputCustom
+            type="number"
+            label="Stock"
+            value={formData.stock}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                stock: Number.parseInt(e.target.value) || 0,
+              })
+            }
+            min={1}
+          />
+          <InputCustom
+            type="file"
+            label="Imagen"
+            accept="image/*"
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) {
+                setFormData({ ...formData, imagen: file });
+              }
+            }}
+          />
+        </section>
         <Button
           onClick={handleSubmit}
           disabled={
@@ -140,8 +143,10 @@ function ModificarProductoForm({
         >
           Modificar Producto
         </Button>
+        <Button onClick={() => navigate("/")}>
+          Volver
+        </Button>
       </form>
-      <Button onClick={() => navigate("/")}>Volver</Button>
     </main>
   );
 }
